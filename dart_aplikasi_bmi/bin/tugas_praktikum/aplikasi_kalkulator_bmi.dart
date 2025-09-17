@@ -29,13 +29,10 @@ void main() {
 void hitungBMI(
   double tinggiCm,
   double beratKg,
-  List<Map<String, dynamic>> riwayat,
-) {
+  List<Map<String, dynamic>> riwayat) {
   // Konversi tinggi dari cm ke m
   double tinggiM = tinggiCm / 100; // Hitung BMI
-  double bmi =
-      beratKg /
-      (tinggiM * tinggiM); // Tentukan kategori menggunakan percabangan
+  double bmi = beratKg / (tinggiM * tinggiM); // Tentukan kategori menggunakan percabangan
   String kategori;
   if (bmi < 18.5) {
     kategori = "Kurus";
@@ -53,19 +50,3 @@ void hitungBMI(
     'kategori': kategori,
   });
 }
-
-
-
-// void input_validation() {
-//   // melakukan input dari kalkulator BMI
-//   print("Masukkan Tinggi Badan Anda : ");
-//   // input user
-//   String? tinggiBadan = stdin.readLineSync();
-//   double? tinggiConvert = double.tryParse(tinggiBadan ?? '');
-
-//   print("Masukkan Tinggi Badan Anda : ");
-//   String? beratBadan = stdin.readLineSync();
-//   double? beratConvert = double.tryParse(beratBadan ?? '');
-
-  
-// }
