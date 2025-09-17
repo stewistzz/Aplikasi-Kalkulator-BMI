@@ -6,7 +6,6 @@ void main() {
   hitungBMI(170, 65, riwayat);
   hitungBMI(165, 75, riwayat);
   hitungBMI(180, 85, riwayat); // Tampilkan riwayat menggunakan perulangan
-  tampilkanRiwayat(riwayat);
 
   // melakukan input dari kalkulator BMI
   print("Masukkan Tinggi Badan Anda : ");
@@ -14,7 +13,7 @@ void main() {
   String? tinggiBadan = stdin.readLineSync();
   double? tinggiConvert = double.tryParse(tinggiBadan ?? '');
 
-  print("Masukkan Tinggi Badan Anda : ");
+  print("Masukkan Berat Badan Anda : ");
   String? beratBadan = stdin.readLineSync();
   double? beratConvert = double.tryParse(beratBadan ?? '');
 
@@ -22,17 +21,24 @@ void main() {
   if (tinggiConvert != null && beratConvert != null) {
     hitungBMI(tinggiConvert, beratConvert, riwayat);
   } else {
-    print("Input tidak valid. Mohon masukkan angka yang benar untuk tinggi dan berat badan.");
+    print(
+      "Input tidak valid. Mohon masukkan angka yang benar untuk tinggi dan berat badan.",
+    );
   }
+  tampilkanRiwayat(riwayat);
+  
 }
 
 void hitungBMI(
   double tinggiCm,
   double beratKg,
-  List<Map<String, dynamic>> riwayat) {
+  List<Map<String, dynamic>> riwayat,
+) {
   // Konversi tinggi dari cm ke m
   double tinggiM = tinggiCm / 100; // Hitung BMI
-  double bmi = beratKg / (tinggiM * tinggiM); // Tentukan kategori menggunakan percabangan
+  double bmi =
+      beratKg /
+      (tinggiM * tinggiM); // Tentukan kategori menggunakan percabangan
   String kategori;
   if (bmi < 18.5) {
     kategori = "Kurus";
@@ -49,4 +55,13 @@ void hitungBMI(
     'bmi': bmi,
     'kategori': kategori,
   });
+}
+
+void tampilkanRiwayat(List<Map<String, dynamic>> riwayat) {
+  print("\nRiwayat Perhitungan BMI:");
+  for (var entry in riwayat) {
+    print(
+      "Tinggi: ${entry['tinggi']} cm, Berat: ${entry['berat']} kg, BMI: ${entry['bmi'].toStringAsFixed(2)}, Kategori: ${entry['kategori']}",
+    );
+  }
 }
